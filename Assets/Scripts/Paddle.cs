@@ -9,7 +9,7 @@ public class Paddle : MonoBehaviour
     float height;
 
     string input;
-    bool isRight;
+    public bool isRight;
     // Start is called before the first frame update
     void Start()
     {

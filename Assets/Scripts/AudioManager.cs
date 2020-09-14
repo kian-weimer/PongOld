@@ -1,4 +1,5 @@
 ﻿using UnityEngine.Audio;
+using System;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,13 +12,16 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound s in sounds)
         {
-            gameObject.AddComponent<AudioSource>();
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Play (string name) {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Play();
     }
 }
